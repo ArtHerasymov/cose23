@@ -1,17 +1,13 @@
-from cose23.services import load_comments
-from cose23.db.driver.db_driver import *
-from cose23.services.normalization_service import *
-from cose23.machinelearning.data_processor import *
+import services
+from db.driver.db_driver import *
 
 # load_comments()
 
-dbdriver = DBDriver("comments")
-data = dbdriver.get_all()
-comment_list = []
-for record in data:
-    comment_list.append(record["text"])
+commentsDB = DBDriver("comments")
+data = commentsDB.get_all({'text': 1})[0:100]
+comment_list = [record["text"] for record in data]
+print("Fetched from DB")
+data = list(services.normalize_data(comment_list))
 
-normalization_service = NormalizationService(comment_list)
-ml_service = DataProcessor(normalization_service.normalize_text())
-
-ml_service.generate_cloud()
+print("Normalized")
+services.generate_cloud(data)

@@ -7,10 +7,23 @@ name = "pypi"
 scrapy = "*"
 pymongo = "*"
 flask-restful = "*"
+nltk = "*"
+"pymorphy2" = "*"
+sklearn = "*"
+wordcloud = "*"
+matplotlib = "*"
+pandas = "*"
+numpy = "*"
+scipy = "*"
+ipython = "*"
+jupyter = "*"
+sympy = "*"
+nose = "*"
 
 [dev-packages]
 pylint = "*"
 rope = "*"
+ipython = "*"
 
 [requires]
 python_version = "3.6"
